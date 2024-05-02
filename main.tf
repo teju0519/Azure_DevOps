@@ -27,15 +27,6 @@ module "resourcegreouptest" {
 }
 
 
-
-
-
-
-
-
-
-example for vault code
-
 provider "aws" {
     region = "us-east-1"
 }
