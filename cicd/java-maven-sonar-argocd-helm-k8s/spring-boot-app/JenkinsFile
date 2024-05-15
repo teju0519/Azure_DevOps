@@ -39,6 +39,9 @@ pipeline {
         script {
             sh 'cd cicd/java-maven-sonar-argocd-helm-k8s/spring-boot-app && docker build -t ${DOCKER_IMAGE} .'
             def dockerImage = docker.image("${DOCKER_IMAGE}")
+            docker.withRegistry('https://index.docker.io/v1/', "docker-cred") {
+                dockerImage.push()
+            }
         }
       }
     }
@@ -51,9 +54,7 @@ pipeline {
     stage('Push Docker Image') {
       steps {
         script {
-            docker.withRegistry('https://index.docker.io/v1/', "docker-cred") {
-                def dockerPush = docker.push()
-            }
+          echo "passed"
         }
       }
     }
