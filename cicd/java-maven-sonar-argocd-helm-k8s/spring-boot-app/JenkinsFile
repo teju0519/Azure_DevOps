@@ -44,7 +44,7 @@ pipeline {
     }
     stage('Trivy vulnerability scan') {
       steps {
-        sh "sudo bash trivy-iage-scan.sh ${BUILD_NUMBER}"
+        sh "bash trivy-image-scan.sh ${BUILD_NUMBER}"
       }
     }
     stage('Push Docker Image') {
